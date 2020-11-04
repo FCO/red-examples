@@ -11,7 +11,7 @@ my \Post = blog-schema."Blog::Schema::Post"();
 
 isa-ok blog-schema."Blog::Schema::Post"(), Post;
 
-my \u1 = User.^create: :name<user1>, :email<a@b.com>, :passwd[%(:password<1234>)];
+my \u1 = User.^create: :name<user1>, :email<a@b.com>, :settings[%(:password<1234>)];
 
 isa-ok u1, User;
 
@@ -23,6 +23,10 @@ is u1.last-created-post.body, p1.body;
 
 is u1.last-published-post, Nil;
 
-.say for u1.password;
+isa-ok u1.password, Str;
+is u1.password, '$6Aa8fk/N2FeY';
+
+ok not u1.check-password: "1111";
+ok u1.check-password: "1234";
 
 done-testing;

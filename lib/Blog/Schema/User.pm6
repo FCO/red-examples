@@ -9,7 +9,11 @@ has      @.posts    is relationship(*.author-id, :model<Blog::Schema::Post>);
 has      @.settings is relationship(*.user-id,   :model<Blog::Schema::UserSettings>);
 
 method password {
-    @!settings.head
+    @!settings.head.password
+}
+
+method check-password(|c) {
+    @!settings.head.check-password: |c
 }
 
 method last-created-post {
