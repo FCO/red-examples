@@ -8,12 +8,14 @@
   ],
   "auth": "Write me!",
   "depends": [
-    "Red"
+    "Red",
+    "RedX::HashedPassword"
   ],
   "build-depends": [],
   "test-depends": [],
   "provides": {
     "Blog::Schema": "lib/Blog/Schema.pm6",
+    "Blog::Schema::UserSettings": "lib/Blog/Schema/UserSettings.pm6",
     "Blog::Schema::Post": "lib/Blog/Schema/Post.pm6",
     "Blog::Schema::User": "lib/Blog/Schema/User.pm6",
     "red-examples": "lib/red-examples.pm6"
